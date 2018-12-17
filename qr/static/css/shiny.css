@@ -1,0 +1,26 @@
+:root {
+    --cell-height: 20px;
+}
+
+.color_cell {
+    text-align: center;
+    display: inline-block;
+    line-height: 20px;
+    height: 20px;
+    width: 20px;
+    box-shadow:inset 0px 0px 0px 0.5px #000;
+}
+
+.highlight_cell { box-shadow:inset 0px 0px 0px 4px #f00; }
+.border_cell_cell { box-shadow:inset 0px 0px 0px 4px #0f0; }
+
+.cross_cell div div {
+    background-image: url("../img/wool.png"); 
+    background-size: cover;
+    font-size: 0px;
+}
+footer { 
+    float:center;
+}
+.red { 
+box-shadow: inset 0px 0px 0px 1px #f00 }

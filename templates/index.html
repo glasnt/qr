@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+<link rel="stylesheet" href="{% static 'css/shiny.css' %}">
+<script>
+function toggleThread(cb) { 
+    if (cb.checked) { 
+         document.getElementById("chartholder").className = "cross_cell"
+         // Remove centerpoint highlight, but tag for later returning
+         document.getElementsByClassName("highlight_cell")[0].className = "color_cell highlight"
+    } else {  
+         document.getElementById("chartholder").className = ""
+         document.getElementsByClassName("highlight")[0].className = "color_cell highlight_cell"
+    }
+} 
+
+function toggleGuide(cb) { 
+    if (cb.checked) { 
+         l = document.getElementsByClassName("red")
+         console.log(l.length)
+         for(var x of l) { x.className = "color_cell nored" }
+    } else {  
+         l = document.getElementsByClassName("nored")
+         console.log(l.length)
+         for(var x of l) { x.className = "color_cell red" }
+    }
+} 
+
+</script>
+<title>qr code cross stitch chart generator</title>
+<style> #chartholder { width: {{chartholder}}px; }</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="twelve columns">
+          <h1>qr code chart generator</h1>
+        </div>
+    </div>
+
+    <form>
+    <div class="row">
+        <div class="three columns">
+          <h4>Enter string:<h4> 
+        </div>
+        <div class="six columns">
+              <input class="u-full-width" placeholder="Your QRCode String here" name="code" type="text"/>
+        </div>
+        <div class="three columns">
+              <input class="button-primary" value="generate" type="submit"></h3>
+         </div>
+       </div>
+    </form>
+
+    {% if code %}
+    
+    <hr>
+    <div class="row">
+        <div class="twelve columns">
+          <h3>"{{code}}"</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="two columns">
+          <label>
+            <input type="checkbox" onclick='toggleThread(this)' id="thread"/>
+            <span class="label-body">Render thread</span>
+          </label>
+        </div>
+        </label></form>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+          <div id="chartholder">{{chart | safe}}</div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <hr> 
+        <div class="twelve columns" style="text-align: center">
+          <a href="http://www.djangopony.com/"><img src="{% static 'img/pony.png' %}"></a>
+        </div>
+    </div>
+</div>
+</body>
