@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://unpkg.com/mvp.css">
+<header><h1>qr</h1>
+<h4>generate qr code cross-stitch charts</h4>
+</header>
+
+<style>
+{{style|safe}}
+button { padding: 2px}
+input, label { display: inline-block; }
+form { border: none; box-shadow: none; padding: 10px}
+h4 { font-weight: normal; font-style: italic; }
+</style>
+
+
+<main>
+<section>
+<form action="{{ url_for('generate') }}" method="post">
+  <label for="q">string:</label>
+  <input type="text" name="q" value="{{query or ''}}"></input>
+  <button type="submit">generate</button>
+</form>
+
+</section>
+  <section>
+
+{{chart|safe}}
+</section></main>
+<footer><p align="center"><a href="https://github.com/glasnt/qr">Made</a> with 💜 by <a href="https://glasnt.com">glasnt</a>.</p></footer>

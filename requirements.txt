@@ -1,0 +1,5 @@
+Flask
+bs4
+gunicorn
+ih
+qrcode
